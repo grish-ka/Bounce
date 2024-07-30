@@ -14,8 +14,6 @@ pygame.mixer.init() # add this line
 
 s = 'sound'
 main = pygame.mixer.Sound(os.path.join(s, 'main.ogg'))
-point = pygame.mixer.Sound(os.path.join(s, 'point1.ogg'))
-lose = pygame.mixer.Sound(os.path.join(s, 'lose1.ogg'))
 
 # class rectangel:
 #     def __init__(self, canvas, color):
@@ -77,7 +75,6 @@ class Score:
 
     def increase(self):
         self.score = self.score + 1
-        pygame.mixer.Sound.play(point)
 
     def winsys(self):
         return self.score >= self.win
@@ -94,7 +91,6 @@ class Fails:
 
     def increase(self):
         self.fail = self.fail + 1
-        pygame.mixer.Sound.play(lose)
 
     def losesys(self):
         return self.fail >= self.fails
