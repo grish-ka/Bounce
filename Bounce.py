@@ -5,14 +5,23 @@
 from tkinter import *
 import random
 import time
+import os
+import pygame
 
-class rectangel:
-    def __init__(self, canvas, color):
-        self.canvas = canvas
-        self.id = canvas.create_rectangle(10, 10, 50, 50, fill=color)
-    def drew(self, coler):
-        self.canvas.itemconfigure(self.id, fill=coler)
-        #self.canvas.move(self.id, 10, 10)
+pygame.init()
+pygame.font.init()
+pygame.mixer.init() # add this line
+
+s = 'sound'
+main = pygame.mixer.Sound(os.path.join(s, 'main.ogg'))
+
+# class rectangel:
+#     def __init__(self, canvas, color):
+#         self.canvas = canvas
+#         self.id = canvas.create_rectangle(10, 10, 50, 50, fill=color)
+#     def drew(self, coler):
+#         self.canvas.itemconfigure(self.id, fill=coler)
+#         #self.canvas.move(self.id, 10, 10)
 
 
 class Ball:
@@ -122,7 +131,7 @@ paddle = Paddle(canvas, 'blue')
 ball = Ball(canvas, paddle, 'red')
 score = Score(canvas, 3)
 failsv = Fails(canvas, 3)
-rec = rectangel(canvas, 'blue')
+#rec = rectangel(canvas, 'blue')
 
 while 1:
     if ball.hit_paddle(0):
@@ -145,11 +154,11 @@ while 1:
     paddle.draw()
     score.draw()
     failsv.drew()
-    rec.drew('blue')
+    #rec.drew('blue')
     # else:
     #     score.score = 0
 
-
+    pygame.mixer.Sound.play(main)
     tk.update_idletasks()
     tk.update()
     time.sleep(0.01)
